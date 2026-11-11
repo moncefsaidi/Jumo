@@ -1,0 +1,18 @@
+{
+  "name": "Jumo - تسيير ورشة الخياطة",
+  "short_name": "Jumo",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f6f3",
+  "theme_color": "#24463f",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

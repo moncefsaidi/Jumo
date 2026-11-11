@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#24463f">
+  <meta name="description" content="Jumo - تسيير ورشة الخياطة">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <title>Jumo | تسيير الورشة</title>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="mark">J</span><div><strong>Jumo</strong><small>تسيير ورشة الخياطة</small></div></div>
+    <div class="top-actions"><button id="langBtn" class="ghost">Français</button><button id="logoutBtn" class="ghost hidden">خروج</button></div>
+  </header>
+
+  <main>
+    <section id="loginView" class="panel login-panel">
+      <p class="eyebrow">JUMO WORKSPACE</p>
+      <h1>مرحبا بك في Jumo</h1>
+      <p class="muted">سجّل الدخول للوصول إلى مخزون وإنتاج الورشة.</p>
+      <form id="loginForm">
+        <label>البريد الإلكتروني<input id="email" type="email" autocomplete="username" required placeholder="name@example.com"></label>
+        <label>كلمة المرور<input id="password" type="password" autocomplete="current-password" required placeholder="••••••••" minlength="6"></label>
+        <button class="primary" type="submit">تسجيل الدخول</button>
+      </form>
+      <p id="loginMessage" class="message" role="status"></p>
+    </section>
+
+    <section id="appView" class="hidden">
+      <div class="welcome">
+        <div><p class="eyebrow">WORKSHOP MANAGEMENT</p><h1 id="hello">لوحة التحكم</h1><p class="muted" id="userLabel"></p></div>
+        <span class="status"><i></i> متصل</span>
+      </div>
+      <nav class="tabs" aria-label="أقسام التطبيق">
+        <button class="tab active" data-section="inventory">المخزون</button>
+        <button class="tab" data-section="production">الإنتاج</button>
+        <button class="tab" data-section="sales">المبيعات</button>
+        <button class="tab" data-section="expenses">المصاريف</button>
+        <button class="tab" data-section="payroll">الأجور</button>
+      </nav>
+      <section class="panel section-panel">
+        <div class="section-heading"><div><p class="eyebrow" id="sectionEyebrow">STOCK</p><h2 id="sectionTitle">المخزون</h2></div><button id="refreshBtn" class="ghost">تحديث ↻</button></div>
+        <div id="inventoryTools">
+          <form id="inventoryForm" class="entry-form">
+            <label>اسم المادة<input id="itemName" required placeholder="مثلاً: قماش قطني"></label>
+            <label>النوع<select id="itemCategory"><option value="fabric">قماش</option><option value="supplies">لوازم</option><option value="finished">منتج جاهز</option><option value="other">أخرى</option></select></label>
+            <div class="form-row"><label>الكمية<input id="itemQty" type="number" min="0" step="0.01" required placeholder="0"></label><label>الوحدة<input id="itemUnit" value="متر" required></label></div>
+            <label>تكلفة الوحدة (دج)<input id="itemCost" type="number" min="0" step="0.01" value="0"></label>
+            <button class="primary" type="submit">إضافة للمخزون</button>
+          </form>
+        </div>
+        <p id="appMessage" class="message" role="status"></p>
+        <div class="table-wrap"><table><thead id="tableHead"></thead><tbody id="tableBody"><tr><td class="muted">جاري التحميل...</td></tr></tbody></table></div>
+      </section>
+      <p class="footnote">Jumo نسخة أولية — البيانات محفوظة في مشروع Supabase الخاص بك.</p>
+    </section>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
